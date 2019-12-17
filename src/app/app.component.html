@@ -1,0 +1,11 @@
+<div class="mainPage" [ngStyle]="{'background-color': backgroundColor}">
+  <settings></settings>
+  <div class="googleSearchBar">
+    <h1 class="title">Search on Google</h1>
+    <div class="search__container">
+      <input class="search__input" type="text" placeholder="Rechercher..." [(ngModel)]="searchTxt" (keyup.enter)="searchOnGoogle()">
+    </div>
+  </div>
+
+  <time></time>
+</div>

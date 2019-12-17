@@ -1,0 +1,23 @@
+/* Add application styles & imports to this file! */
+
+body{
+    margin:0px;
+}
+
+p, h1, h2, h3, h4, h5{
+    font-family: 'Raleway', sans-serif;
+}
+
+.button{
+    cursor:pointer;
+}
+
+.flexRow{
+    display:flex;
+    flex-direction: row;
+}
+
+.flexCol{
+    display:flex;
+    flex-direction: column;
+}

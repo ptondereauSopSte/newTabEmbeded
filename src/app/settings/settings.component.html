@@ -1,0 +1,32 @@
+<!--component html goes here -->
+<img *ngIf="!isSettingsMenuOpened" class="button logoSettings" (click)="openOrCloseMenu()" src="https://image.flaticon.com/icons/png/512/0/525.png"/>
+
+<div *ngIf="isSettingsMenuOpened" class="menuSettings">
+    <img class="button closeButton" (click)="openOrCloseMenu()" src="https://image.flaticon.com/icons/png/512/151/151882.png"/>
+    <h1>Settings</h1>
+    <div class="choiceSelect">
+        <div class="flexRow button backgroundSelect" (click)="openOrCloseSubMenu()">
+            <div class="divPreview"></div>
+            <p>Edit background</p>
+        </div>
+        <div *ngIf="isSubMenuOpened" class="subMenuSettings">
+            <div class="flexRow blockTitle">
+                <p class="button" [ngClass]="{'selected': mapSelectedBackground['color']}" (click)="selectOnMap('background', 'color')">Color</p>
+                <p class="button" [ngClass]="{'selected': mapSelectedBackground['image']}" (click)="selectOnMap('background', 'image')">Picture</p>
+                <img class="button" [ngClass]="{'selected': mapSelectedBackground['random']}" (click)="selectOnMap('background', 'random')" src="https://image.flaticon.com/icons/png/512/159/159781.png"/>
+            </div>
+            <div class="flexCol gridChoice">
+                <div class="flexRow rowColors" *ngFor="let listColors of listsChoiceColorForBackground">
+                    <div *ngFor="let color of listColors">
+                        <div class="button choiceBackground" [ngStyle]="{'background-color': color}" (click)="setBackgroundColor(color)"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row-reverse; width:95%">
+                <div class="button buttonSave">
+                    <p>Save</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
