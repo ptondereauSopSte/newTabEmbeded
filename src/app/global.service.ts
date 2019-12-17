@@ -1,20 +1,49 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class GlobalService {
-    backgroundColor: string = "#131E29";
+    backgroundColor: string;
     backgroundColorSubject = new Subject<string>();
+    backgroundImageUrl: string;
+    backgroundImageUrlSubject = new Subject<string>();
 
-    constructor() { }
+    constructor(private cookieService : CookieService) { }
 
-    setBackGroundColor(colorStr : string){
-        this.backgroundColor=colorStr;
-        this.emitBackgroundColorSubject();
+    init(){
+        this.backgroundColor = this.cookieService.get('tabEmbeded-backgroundColor') ? this.cookieService.get('tabEmbeded-backgroundColor') : "#131E29"
+        this.backgroundImageUrl = this.cookieService.get('tabEmbeded-backgroundImageUrl');
+    }
+
+    setBackGround(keyAdd: string, arg : string){
+        if (keyAdd==='color'){
+            this.backgroundColor=arg;
+            this.backgroundImageUrl=""
+            this.emitBackgroundColorSubject();
+            this.emitBackgroundImageUrlSubject();
+        } else if (keyAdd==='image'){
+            this.backgroundImageUrl=arg;
+            this.emitBackgroundImageUrlSubject();
+        }
+    }
+
+    saveBackGround(keyAdd: string){
+        if (keyAdd==='color'){
+            this.cookieService.set('tabEmbeded-backgroundColor', this.backgroundColor)
+            this.cookieService.set('tabEmbeded-backgroundImageUrl', "")
+        } else if (keyAdd==='image'){
+            this.cookieService.set('tabEmbeded-backgroundImageUrl', this.backgroundImageUrl)
+        }
     }
 
     emitBackgroundColorSubject(){
         this.backgroundColorSubject.next(this.backgroundColor.slice());
+        
+    }
+
+    emitBackgroundImageUrlSubject(){
+        this.backgroundImageUrlSubject.next(this.backgroundImageUrl.slice());
     }
 
 }

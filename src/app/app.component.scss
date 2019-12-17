@@ -6,6 +6,8 @@ p {
     width:100vw;
     height: 100vh;
     overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 settings{
@@ -17,6 +19,12 @@ settings{
 time{
     position: absolute;
     bottom: 1vh;
+    left: 1vw;
+}
+
+statistics{
+    position: absolute;
+    top: 1vh;
     left: 1vw;
 }
 

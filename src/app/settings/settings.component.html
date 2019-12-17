@@ -15,15 +15,26 @@
                 <p class="button" [ngClass]="{'selected': mapSelectedBackground['image']}" (click)="selectOnMap('background', 'image')">Picture</p>
                 <img class="button" [ngClass]="{'selected': mapSelectedBackground['random']}" (click)="selectOnMap('background', 'random')" src="https://image.flaticon.com/icons/png/512/159/159781.png"/>
             </div>
-            <div class="flexCol gridChoice">
+
+            <div *ngIf="mapSelectedBackground['color']" class="flexCol gridChoice">
                 <div class="flexRow rowColors" *ngFor="let listColors of listsChoiceColorForBackground">
                     <div *ngFor="let color of listColors">
-                        <div class="button choiceBackground" [ngStyle]="{'background-color': color}" (click)="setBackgroundColor(color)"></div>
+                        <div class="button choiceBackground" [ngStyle]="{'background-color': color}" (click)="setBackground('color', color)"></div>
                     </div>
                 </div>
             </div>
+
+            <div *ngIf="mapSelectedBackground['image']" class="flexCol gridChoice">
+                <div class="flexRow rowColors" *ngFor="let listImageUrl of listsChoiceImageForBackground">
+                    <div *ngFor="let imageUrl of listImageUrl">
+                        <div class="button choiceBackground" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" (click)="setBackground('image', imageUrl)"></div>
+                    </div>
+                </div>
+            </div>
+
+
             <div style="display: flex; flex-direction: row-reverse; width:95%">
-                <div class="button buttonSave">
+                <div class="button buttonSave" (click)="saveBackGround()">
                     <p>Save</p>
                 </div>
             </div>
