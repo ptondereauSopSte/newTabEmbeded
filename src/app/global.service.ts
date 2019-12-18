@@ -30,10 +30,10 @@ export class GlobalService {
 
     saveBackGround(keyAdd: string){
         if (keyAdd==='color'){
-            this.cookieService.set('tabEmbeded-backgroundColor', this.backgroundColor)
-            this.cookieService.set('tabEmbeded-backgroundImageUrl', "")
+            this.cookieService.set('tabEmbeded-backgroundColor', this.backgroundColor, 365)
+            this.cookieService.set('tabEmbeded-backgroundImageUrl', "", 365)
         } else if (keyAdd==='image'){
-            this.cookieService.set('tabEmbeded-backgroundImageUrl', this.backgroundImageUrl)
+            this.cookieService.set('tabEmbeded-backgroundImageUrl', this.backgroundImageUrl, 365)
         }
     }
 

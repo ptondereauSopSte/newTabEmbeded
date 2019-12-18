@@ -23,7 +23,7 @@ export class SettingsComponent {
 
     listsChoiceImageForBackground : any =[
         ["https://images.unsplash.com/photo-1506202687253-52e1b29d3527?ixlib=rb-1.2.1&w=1000&q=80", "https://c4.wallpaperflare.com/wallpaper/4/562/548/dark-pattern-texture-wallpaper-thumb.jpg", "https://wallpaperplay.com/walls/full/b/6/5/14787.jpg", "https://cdn.wonderfulengineering.com/wp-content/uploads/2016/03/Water-wallpaper-12.jpg"],
-        ["https://wallpaperplay.com/walls/full/0/3/1/326919.jpg", "http://miam-images.m.i.pic.centerblog.net/o/642c05b1.jpg", "https://jmd.im/wp-content/uploads/2017/06/blackiii_thumbnail.jpg", "https://desktopwalls.net/wp-content/uploads/2015/08/Damasc%20Pattern%20Green%20Desktop%20Wallpaper.jpg"],
+        ["https://img3.goodfon.com/wallpaper/nbig/7/88/devushka-bryunetka-model-foto-7149.jpg", "https://i.pinimg.com/originals/bf/16/70/bf16706a144f0de6793b501981c6a1a1.jpg", "https://static1.purepeople.com.br/articles/1/19/78/1/@/182124--950x0-2.jpg","https://jmd.im/wp-content/uploads/2017/06/blackiii_thumbnail.jpg"],
     ]
 
     constructor(private globalService : GlobalService){}
@@ -57,5 +57,7 @@ export class SettingsComponent {
             this.globalService.saveBackGround('image')
         }
         
+        this.isSettingsMenuOpened = false;
+        this.isSubMenuOpened  = false;
     }
 }

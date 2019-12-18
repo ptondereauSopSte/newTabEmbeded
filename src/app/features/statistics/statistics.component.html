@@ -1,5 +1,5 @@
 <div class="flexRow nbrTab">
     <img class="logoNbrTab" src="https://image.flaticon.com/icons/png/512/171/171322.png"/>
     <h1>{{nbrTab}}</h1>
-    <p>(+15%)</p>
+    <p [ngStyle]="{'color': colorPercentTab}">({{percentToPrint}}%)</p>
 </div>
