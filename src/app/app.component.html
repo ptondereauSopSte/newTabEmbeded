@@ -1,12 +1,14 @@
 <div class="mainPage" [style]="styleForBackground">
-  <statistics></statistics>
   <settings></settings>
+
   <div class="googleSearchBar">
     <h1 class="title">Search on Google</h1>
     <div class="search__container">
       <input class="search__input" type="text" placeholder="Rechercher..." [(ngModel)]="searchTxt" (keyup.enter)="searchOnGoogle()">
     </div>
   </div>
-  <time-remaining></time-remaining>
-  <time></time>
+
+  <statistics *ngIf="featuresMap['statistics'].enabled"></statistics>
+  <time-remaining *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
+  <time *ngIf="featuresMap['time'].enabled"></time>
 </div>

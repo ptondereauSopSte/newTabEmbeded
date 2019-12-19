@@ -14,6 +14,9 @@ export class AppComponent implements OnInit{
   backgroundColorSub : Subscription;
   backgroundImageUrl : string;
   backgroundImageUrlSub : Subscription;
+  featuresMap : any;
+  featureMapSub : Subscription;
+
   styleForBackground : SafeStyle;
 
   searchTxt : string;
@@ -40,8 +43,15 @@ export class AppComponent implements OnInit{
       }
     );
     this.globalService.emitBackgroundImageUrlSubject();
-
     this.refreshStyle()
+
+    //On récupère la map des features
+    this.featureMapSub = this.globalService.featuresMapSubject.subscribe(
+      (featuresMap: string) => {
+        this.featuresMap = featuresMap;
+      }
+    );
+    this.globalService.emitFeaturesMapSubject();
   }
 
   searchOnGoogle(){

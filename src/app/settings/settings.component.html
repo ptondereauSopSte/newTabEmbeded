@@ -5,11 +5,13 @@
     <img class="button closeButton" (click)="openOrCloseMenu()" src="https://image.flaticon.com/icons/png/512/151/151882.png"/>
     <h1>Settings</h1>
     <div class="choiceSelect">
-        <div class="flexRow button backgroundSelect" (click)="openOrCloseSubMenu()">
+
+        <div class="flexRow button optionChoice" (click)="openOrCloseSubMenu('background')">
             <div class="divPreview"></div>
             <p>Edit background</p>
         </div>
-        <div *ngIf="isSubMenuOpened" class="subMenuSettings">
+        
+        <div *ngIf="isSubMenuOpened['background']" class="subMenuSettings">
             <div class="flexRow blockTitle">
                 <p class="button" [ngClass]="{'selected': mapSelectedBackground['color']}" (click)="selectOnMap('background', 'color')">Color</p>
                 <p class="button" [ngClass]="{'selected': mapSelectedBackground['image']}" (click)="selectOnMap('background', 'image')">Picture</p>
@@ -24,7 +26,7 @@
                 </div>
             </div>
 
-            <div *ngIf="mapSelectedBackground['image']" class="flexCol gridChoice">
+            <div *ngIf="mapSelectedBackground['image']" class="flexCol gridChoice middlePannel">
                 <div class="flexRow rowColors" *ngFor="let listImageUrl of listsChoiceImageForBackground">
                     <div *ngFor="let imageUrl of listImageUrl">
                         <div class="button choiceBackground" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}" (click)="setBackground('image', imageUrl)"></div>
@@ -34,7 +36,32 @@
 
 
             <div style="display: flex; flex-direction: row-reverse; width:95%">
-                <div class="button buttonSave" (click)="saveBackGround()">
+                <div class="button buttonSave" (click)="save('background')">
+                    <p>Save</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="choiceSelect">
+
+        <div class="flexRow button optionChoice" (click)="openOrCloseSubMenu('features')">
+            <img src="https://image.flaticon.com/icons/png/512/1612/1612195.png"/>
+            <p>Manage features</p>
+        </div>
+        
+        <div *ngIf="isSubMenuOpened['features']" class="subMenuSettings">
+            <div class="flexRow blockTitle">
+                <p>Enable or disable features</p>
+            </div>
+            <div class="flexCol middlePannel">
+                <div *ngFor="let feature of featuresMapKeys" class="flexRow oneFeature">
+                    <p>{{featuresMap[feature].name}}</p>
+                    <mat-slide-toggle [checked]="featuresMap[feature].enabled" [color]="'warn'" (change)="editEnabledFeatures($event, feature)"></mat-slide-toggle>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row-reverse; width:95%">
+                <div class="button buttonSave" (click)="save('features')">
                     <p>Save</p>
                 </div>
             </div>

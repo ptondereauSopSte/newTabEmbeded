@@ -28,23 +28,26 @@
         position: relative;
     }
 
-    .backgroundSelect{
+    .optionChoice{
         width: 100%;
         justify-content: space-around;
         align-items: center;
         &:hover{
             background-color:#48D597;
         }
-        .divPreview{
+        .divPreview,img{
             width:1.5vw;
             height:1.5vw;
+        }
+
+        .divPreview{
             background-color: #131E29;
         }
     }
 }
 
 .subMenuSettings{
-    width:10vw;
+    width:12vw;
     position: absolute;
     right: 10.3vw;
     top: 0vh;
@@ -83,6 +86,9 @@
                 height:1.5vw;
                 border:1px solid black;
                 border-radius:0.43em;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
             }
         }
     }
@@ -98,4 +104,15 @@
             margin:0px;
         }
     }
+}
+
+.oneFeature{
+    justify-content: space-between;
+    width:70%;
+    margin:auto;
+    align-items: center;
+}
+
+.middlePannel{
+    border-bottom:3px solid #212322;
 }

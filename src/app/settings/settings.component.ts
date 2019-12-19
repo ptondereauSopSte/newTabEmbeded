@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { GlobalService } from './../global.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'settings',
     templateUrl: 'settings.component.html',
     styleUrls: ['settings.component.scss']
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit{
     isSettingsMenuOpened : Boolean = false;
-    isSubMenuOpened : Boolean = false;
+    isSubMenuOpened: any = {
+        "background":false,
+        "features":false,
+    }
+
     mapSelectedBackground: any = {
         "color":true,
         "image":false,
@@ -27,13 +32,34 @@ export class SettingsComponent {
         ["https://www.elsetge.cat/myimg/f/46-465549_cute-unicorn-wallpaper-engine.gif", "https://www.a2tech.eu/wp-content/uploads/2019/11/pikaaaaa-chuuuuuuuu.gif", "https://media1.tenor.com/images/8d8356c866266cef31ed2f2e119ffe58/tenor.gif?itemid=5552832", "https://thumbs.gfycat.com/DecimalThisDiscus-small.gif"]
     ]
 
+    featuresMap : any;
+    featureMapSub : Subscription;
+    
+    featuresMapKeys:string[] = []
+
     constructor(private globalService : GlobalService){}
 
+    ngOnInit(){
+        this.featureMapSub = this.globalService.featuresMapSubject.subscribe(
+            (featuresMap: string) => {
+                this.featuresMap = featuresMap;
+            }
+        );
+        this.globalService.emitFeaturesMapSubject();
+        this.featuresMapKeys = Object.keys(this.featuresMap)
+    }
     openOrCloseMenu(){
         this.isSettingsMenuOpened=!this.isSettingsMenuOpened;
     }
-    openOrCloseSubMenu(){
-        this.isSubMenuOpened=!this.isSubMenuOpened;
+    openOrCloseSubMenu(key : string){
+        var alreadyOpened = this.isSubMenuOpened[key];
+        this.isSubMenuOpened = {
+            "background":false,
+            "features":false,
+        }
+        if (!alreadyOpened){
+            this.isSubMenuOpened[key]=true
+        }
     }
 
     selectOnMap(key : string, value : string){
@@ -51,14 +77,22 @@ export class SettingsComponent {
         this.globalService.setBackGround(key, arg)
     }
 
-    saveBackGround(){
-        if (this.mapSelectedBackground['color']){
-            this.globalService.saveBackGround('color')
-        } else{
-            this.globalService.saveBackGround('image')
+    save(key:string){
+        if (key==='background'){
+            if (this.mapSelectedBackground['color']){
+                this.globalService.saveBackGround('color')
+            } else{
+                this.globalService.saveBackGround('image')
+            }
         }
+        
         
         this.isSettingsMenuOpened = false;
         this.isSubMenuOpened  = false;
+    }
+
+    editEnabledFeatures(event:any, keyFeature : string){
+        this.featuresMap[keyFeature].enabled = event.checked
+        this.globalService.setFeature(keyFeature, event.checked)
     }
 }

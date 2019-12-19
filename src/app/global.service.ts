@@ -8,12 +8,31 @@ export class GlobalService {
     backgroundColorSubject = new Subject<string>();
     backgroundImageUrl: string;
     backgroundImageUrlSubject = new Subject<string>();
+    featuresMap : any;
+    featuresMapSubject = new Subject<any>();
 
     constructor(private cookieService : CookieService) { }
 
     init(){
         this.backgroundColor = this.cookieService.get('tabEmbeded-backgroundColor') ? this.cookieService.get('tabEmbeded-backgroundColor') : "#131E29"
         this.backgroundImageUrl = this.cookieService.get('tabEmbeded-backgroundImageUrl');
+        this.featuresMap={
+            time:
+                {
+                    name:"Time",
+                    enabled:true
+                },
+            statistics :
+                {
+                    name:"Statistics",
+                    enabled:true
+                },
+            timeCounter :
+                {
+                    name:"Time counter",
+                    enabled:true
+                }
+        }
     }
 
     setBackGround(keyAdd: string, arg : string){
@@ -26,6 +45,10 @@ export class GlobalService {
             this.backgroundImageUrl=arg;
             this.emitBackgroundImageUrlSubject();
         }
+    }
+    setFeature(keyFeature: string, checked : Boolean){
+        this.featuresMap[keyFeature].enabled=checked;
+        this.emitFeaturesMapSubject();
     }
 
     saveBackGround(keyAdd: string){
@@ -44,6 +67,10 @@ export class GlobalService {
 
     emitBackgroundImageUrlSubject(){
         this.backgroundImageUrlSubject.next(this.backgroundImageUrl.slice());
+    }
+
+    emitFeaturesMapSubject(){
+        this.featuresMapSubject.next(this.featuresMap);
     }
 
 }
