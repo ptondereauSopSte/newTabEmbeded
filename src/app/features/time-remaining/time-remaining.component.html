@@ -1,0 +1,27 @@
+<div class="flexRow cardAdd" [ngClass]="{'opened': isAddingEvent}">
+    <div class="flexCol" style="height:100%; justify-content: center;">
+        <img class="button addCardIcon" [ngClass]="{'closeCardIcon': isAddingEvent}" (click)="openAddOrCloseAdd()" src="https://image.flaticon.com/icons/png/512/104/104618.png"/>
+    </div>
+    <form *ngIf="isAddingEvent" class="flexRow form">
+        <mat-form-field >
+            <input matInput placeholder="Title" [(ngModel)]="addTitle" [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Choose a date"
+                (dateInput)="changeDate($event)" (dateChange)="changeDate($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </form>
+    <div  *ngIf="isAddingEvent" class="flexCol" style="height:100%; justify-content: center;">
+        <img class="button saveIcon" (click)="addEvent()" src="https://image.flaticon.com/icons/png/512/148/148767.png"/>
+    </div>
+</div>
+
+<div class="flexCol listCard">
+    <div class="card" *ngFor="let event of lEvent">
+        <img class="button deleteIcon" (click)="deleteEvent(event)" src="https://image.flaticon.com/icons/png/512/1828/1828843.png"/>
+        <time-remaining-card [event]="event"></time-remaining-card>
+    </div>
+    
+</div>

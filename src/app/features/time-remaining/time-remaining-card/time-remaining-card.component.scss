@@ -1,0 +1,21 @@
+.card{
+    position: relative;
+    width:12vw;
+    height:10vh;
+    padding:0.5vw;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    text-align: center;
+}
+
+.timeRemaining{
+    font-weight: bold;
+    font-size: 4vh;
+    font-family: 'Ubuntu', sans-serif;
+    margin:0px;
+}
+
+.evenement{
+    font-size: 2vh;
+}

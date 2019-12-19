@@ -1,5 +1,6 @@
 import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service'
 
@@ -8,12 +9,16 @@ import { SettingsComponent } from './settings/settings.component';
 
 import { TimeComponent } from './features/time/time.component';
 import { StatisticsComponent } from './features/statistics/statistics.component';
+import { TimeRemainingComponent } from './features/time-remaining/time-remaining.component';
+import { TimeRemainingCardComponent } from './features/time-remaining/time-remaining-card/time-remaining-card.component';
+
 
 import { GlobalService } from './global.service';
+import { MaterialModule } from './material.module';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, SettingsComponent, TimeComponent, StatisticsComponent ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MaterialModule ],
+  declarations: [ AppComponent, SettingsComponent, TimeComponent, StatisticsComponent,TimeRemainingComponent, TimeRemainingCardComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ GlobalService, CookieService ]
 })
