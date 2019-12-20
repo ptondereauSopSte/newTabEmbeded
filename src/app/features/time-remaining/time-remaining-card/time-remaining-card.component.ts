@@ -11,7 +11,6 @@ export class TimeRemainingCardComponent implements OnInit {
     title : String;
 
     ngOnInit(){
-        console.log(this.event.dateTs)
         this.nbrJour = Math.floor((this.event.dateTs -new Date().getTime())/(24*60*60*1000))
         this.title = this.event.title
     }

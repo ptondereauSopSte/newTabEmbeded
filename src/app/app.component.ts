@@ -71,7 +71,6 @@ export class AppComponent implements OnInit{
 
   refreshStyle(){
     if(this.backgroundImageUrl){
-      console.log(this.backgroundImageUrl)
       this.styleForBackground = this.sanitizer.bypassSecurityTrustStyle("background-image: url("+this.backgroundImageUrl+");");
     } else{
       this.styleForBackground = this.sanitizer.bypassSecurityTrustStyle("background-color: "+this.backgroundColor+";");
