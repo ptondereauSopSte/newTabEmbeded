@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import $ from 'jquery';
 
 import { GlobalService } from './global.service';
 import { Subscription } from 'rxjs';
@@ -24,11 +25,12 @@ export class AppComponent implements OnInit{
   featuresDraggable : Boolean = false;
   featuresDraggableSub : Subscription;
 
+  mapPositionStyle : any = {};
+
   constructor(private globalService : GlobalService, private sanitizer : DomSanitizer){}
 
   ngOnInit() {
     this.globalService.init();
-
 
     //On récupère les styles pour les background
     this.backgroundColorSub = this.globalService.backgroundColorSubject.subscribe(
@@ -52,6 +54,7 @@ export class AppComponent implements OnInit{
     this.featureMapSub = this.globalService.featuresMapSubject.subscribe(
       (featuresMap: any) => {
         this.featuresMap = featuresMap;
+        this.safeMap();
       }
     );
     this.globalService.emitFeaturesMapSubject();
@@ -77,8 +80,30 @@ export class AppComponent implements OnInit{
     }
   }
 
-  alert(){
-    alert("off")
+  editPosition(keyFeature : string){
+    let elementOffset = $("#"+keyFeature+"Box").offset()
+    let positionStyle = ""
+    if(elementOffset.top){
+      positionStyle+="top:"+elementOffset.top+"px;"
+    }
+    if(elementOffset.bottom){
+      positionStyle+="bottom:"+elementOffset.bottom+"px;"
+    }
+    if(elementOffset.left){
+      positionStyle+="left:"+elementOffset.left+"px;"
+    }
+    if(elementOffset.right){
+      positionStyle+="right:"+elementOffset.right+"px;"
+    }
+
+    this.globalService.editPositionInFeatureMap(keyFeature, positionStyle)
+    this.safeMap()
+  }
+
+  safeMap(){
+    Object.keys(this.featuresMap).forEach((feature)=>{
+      this.mapPositionStyle[feature]=this.sanitizer.bypassSecurityTrustStyle(this.featuresMap[feature]['position'])
+    })
   }
 
 }

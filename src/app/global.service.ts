@@ -20,6 +20,39 @@ export class GlobalService {
         this.backgroundColor = this.cookieService.get('tabEmbeded-backgroundColor') ? this.cookieService.get('tabEmbeded-backgroundColor') : "#131E29"
         this.backgroundImageUrl = this.cookieService.get('tabEmbeded-backgroundImageUrl');
         this.featuresMap = JSON.parse(this.cookieService.get('tabEmbeded-featuresMap'));
+
+        /*this.featuresMap = {
+            "time":
+            {
+                "name":"Time",
+                "enabled":true,
+            },
+            "statistics":
+            {
+                "name":"Statistics",
+                "enabled":true,
+            },
+            "timeCounter":
+            {
+                "name":"Time counter",
+                "enabled":true
+            },
+            "counters":
+            {
+                "name":"Counters",
+                "enabled":true
+            },
+            "weather":
+            {
+                "name":"Weather",
+                "enabled":true
+            },
+            "panda":
+            {
+                "name":"Panda counter",
+                "enabled":true
+            }
+        }*/
     }
 
     setBackGround(keyAdd: string, arg : string){
@@ -51,6 +84,11 @@ export class GlobalService {
         this.featuresDraggable=false;
         this.cookieService.set('tabEmbeded-featuresMap', JSON.stringify(featuresMap) , 365)
         this.emitFeaturesDraggableSubject();
+    }
+
+    editPositionInFeatureMap(keyFeature : string, positionStyle : string){
+        this.featuresMap[keyFeature]['position']=positionStyle;
+        this.emitFeaturesMapSubject();
     }
 
     enableOrDisableMove(){
