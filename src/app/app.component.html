@@ -12,15 +12,17 @@
     <statistics [fake]="false" *ngIf="featuresMap['statistics'].enabled"></statistics>
     <time-remaining *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
     <time *ngIf="featuresMap['time'].enabled"></time>
-    <coffee-counter></coffee-counter>
-    <weather></weather>
+    <coffee-counter *ngIf="featuresMap['counters'].enabled"></coffee-counter>
+    <weather *ngIf="featuresMap['weather'].enabled"></weather>
+    <time-spending *ngIf="featuresMap['panda'].enabled"></time-spending>
   </div>
 
   <div class="features draggable" [ngClass]="{'hidden': !featuresDraggable}">
     <statistics [fake]="true" *ngIf="featuresMap['statistics'].enabled" cdkDrag (mouseup)="alert()"></statistics>
     <time-remaining *ngIf="featuresMap['timeCounter'].enabled" cdkDrag (mouseup)="alert()"></time-remaining>
     <time *ngIf="featuresMap['time'].enabled" cdkDrag (mouseup)="alert()"></time>
-    <coffee-counter cdkDrag (mouseup)="alert()"></coffee-counter>
-    <weather cdkDrag (mouseup)="alert()"></weather>
+    <coffee-counter *ngIf="featuresMap['counters'].enabled" cdkDrag (mouseup)="alert()"></coffee-counter>
+    <weather *ngIf="featuresMap['weather'].enabled" cdkDrag (mouseup)="alert()"></weather>
+    <time-spending *ngIf="featuresMap['panda'].enabled" cdkDrag (mouseup)="alert()"></time-spending>
   </div>
 </div>

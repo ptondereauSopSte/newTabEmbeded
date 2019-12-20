@@ -19,23 +19,7 @@ export class GlobalService {
     init(){
         this.backgroundColor = this.cookieService.get('tabEmbeded-backgroundColor') ? this.cookieService.get('tabEmbeded-backgroundColor') : "#131E29"
         this.backgroundImageUrl = this.cookieService.get('tabEmbeded-backgroundImageUrl');
-        this.featuresMap={
-            time:
-                {
-                    name:"Time",
-                    enabled:true
-                },
-            statistics :
-                {
-                    name:"Statistics",
-                    enabled:true
-                },
-            timeCounter :
-                {
-                    name:"Time counter",
-                    enabled:true
-                }
-        }
+        this.featuresMap = JSON.parse(this.cookieService.get('tabEmbeded-featuresMap'));
     }
 
     setBackGround(keyAdd: string, arg : string){
@@ -63,8 +47,9 @@ export class GlobalService {
         }
     }
 
-    saveFeatures(){
+    saveFeatures(featuresMap : any){
         this.featuresDraggable=false;
+        this.cookieService.set('tabEmbeded-featuresMap', JSON.stringify(featuresMap) , 365)
         this.emitFeaturesDraggableSubject();
     }
 

@@ -1,5 +1,7 @@
 <!--component html goes here -->
 <div class="card" *ngIf="weatherForecast">
+    <h1 style="font-size: 2vh;margin: 0px;">Weather</h1>
+    <p style="margin: 0px;font-style: italic;">({{city}})</p>
     <div class="oneWeather">
         <h1>Today</h1>
         <div class="flexRow infoWeather">
@@ -10,7 +12,7 @@
         </div>
     </div>
     <div class="oneWeather">
-        <h1>J-1</h1>
+        <h1>J+1</h1>
         <div class="flexRow infoWeather">
             <div class="boxImg">
                 <img [src]="weatherForecast['tomorrow'].image"/>
@@ -19,7 +21,7 @@
         </div>
     </div>
     <div class="oneWeather">
-        <h1>J-2</h1>
+        <h1>J+2</h1>
         <div class="flexRow infoWeather">
             <div class="boxImg">
                 <img [src]="weatherForecast['tomorrowOfTomorrow'].image"/>

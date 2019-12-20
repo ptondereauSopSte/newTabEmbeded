@@ -87,7 +87,7 @@ export class SettingsComponent implements OnInit{
         }
 
         if (key==='features'){
-            this.globalService.saveFeatures();
+            this.globalService.saveFeatures(this.featuresMap);
         }
         
         this.isSettingsMenuOpened = false;

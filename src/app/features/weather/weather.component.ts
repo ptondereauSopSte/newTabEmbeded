@@ -12,6 +12,7 @@ export class WeatherComponent implements OnInit{
         'tomorrow' : {},
         'tomorrowOfTomorrow': {}
     }
+    city : string;
     constructor(private httpClient: HttpClient) {}
     
     ngOnInit(){
@@ -21,6 +22,7 @@ export class WeatherComponent implements OnInit{
                 let long = pos.coords.longitude;
                 this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+long+"&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
                     (response) => {
+                        this.city = response.city.name
                         //Températures
                         this.weatherForecast['today']["temperature"] = response.list[0].main.temp
                         this.weatherForecast['tomorrow']["temperature"] = response.list[8].main.temp
@@ -37,7 +39,31 @@ export class WeatherComponent implements OnInit{
                     }
                 );
 
-            });
+            }, 
+            (pos)=>{
+                let lat = 43.297;
+                let long = 5.3811;
+                this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+long+"&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
+                    (response) => {
+                        this.city = response.city.name
+
+                        //Températures
+                        this.weatherForecast['today']["temperature"] = response.list[0].main.temp
+                        this.weatherForecast['tomorrow']["temperature"] = response.list[8].main.temp
+                        this.weatherForecast['tomorrowOfTomorrow']["temperature"] = response.list[16].main.temp
+
+                        //Méteo
+                        this.weatherForecast['today']["image"]="http://openweathermap.org/img/wn/"+response.list[0].weather[0].icon+"@2x.png";
+                        this.weatherForecast['tomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[8].weather[0].icon+"@2x.png";
+                        this.weatherForecast['tomorrowOfTomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[16].weather[0].icon+"@2x.png";
+
+                    },
+                    (error) => {
+                        console.log('Erreur ! : ' + error); 
+                    }
+                );
+
+            })
         }
     }
 }

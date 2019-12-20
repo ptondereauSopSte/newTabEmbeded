@@ -14,6 +14,7 @@ import { TimeRemainingComponent } from './features/time-remaining/time-remaining
 import { TimeRemainingCardComponent } from './features/time-remaining/time-remaining-card/time-remaining-card.component';
 import { CoffeeCounterComponent } from './features/coffee-counter/coffee-counter.component'
 import { WeatherComponent } from './features/weather/weather.component'
+import { TimeSpendingComponent } from './features/time-spending/time-spending.component';
 
 
 import { GlobalService } from './global.service';
@@ -29,7 +30,8 @@ import { MaterialModule } from './material.module';
       TimeRemainingComponent,
       TimeRemainingCardComponent,
       CoffeeCounterComponent,
-      WeatherComponent
+      WeatherComponent,
+      TimeSpendingComponent
     ],
   bootstrap:    [ AppComponent ],
   providers: [ GlobalService, CookieService ]
