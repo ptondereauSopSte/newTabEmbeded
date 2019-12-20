@@ -1,0 +1,31 @@
+<!--component html goes here -->
+<div class="card" *ngIf="weatherForecast">
+    <div class="oneWeather">
+        <h1>Today</h1>
+        <div class="flexRow infoWeather">
+            <div class="boxImg">
+                <img [src]="weatherForecast['today'].image"/>
+            </div>
+            <p>{{weatherForecast['today'].temperature}}°</p>
+        </div>
+    </div>
+    <div class="oneWeather">
+        <h1>J-1</h1>
+        <div class="flexRow infoWeather">
+            <div class="boxImg">
+                <img [src]="weatherForecast['tomorrow'].image"/>
+            </div>
+            <p>{{weatherForecast['tomorrow'].temperature}}°</p>
+        </div>
+    </div>
+    <div class="oneWeather">
+        <h1>J-2</h1>
+        <div class="flexRow infoWeather">
+            <div class="boxImg">
+                <img [src]="weatherForecast['tomorrowOfTomorrow'].image"/>
+            </div>
+            <p>{{weatherForecast['tomorrowOfTomorrow'].temperature}}°</p>
+        </div>
+    </div>
+    
+</div>

@@ -13,6 +13,7 @@
     <time-remaining *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
     <time *ngIf="featuresMap['time'].enabled"></time>
     <coffee-counter></coffee-counter>
+    <weather></weather>
   </div>
 
   <div class="features draggable" [ngClass]="{'hidden': !featuresDraggable}">
@@ -20,5 +21,6 @@
     <time-remaining *ngIf="featuresMap['timeCounter'].enabled" cdkDrag (mouseup)="alert()"></time-remaining>
     <time *ngIf="featuresMap['time'].enabled" cdkDrag (mouseup)="alert()"></time>
     <coffee-counter cdkDrag (mouseup)="alert()"></coffee-counter>
+    <weather cdkDrag (mouseup)="alert()"></weather>
   </div>
 </div>

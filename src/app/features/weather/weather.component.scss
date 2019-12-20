@@ -1,0 +1,27 @@
+.card{
+    width:6vw;
+    text-align: center;
+    padding:0.5vw;
+    border-radius: 3px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    background-color: whitesmoke;
+}
+
+.oneWeather{
+    padding:1vh 0vw;
+    h1{
+        margin:10px;
+    }
+    .infoWeather{
+        justify-content: space-between;
+        width: 100%;
+        .boxImg{
+            border-radius:100%;
+            background-color:#48D597;
+        }
+        img{
+            width:3vw;
+            height:3vw;
+        }
+    }
+}
