@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service'
 
 @Component({
@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service'
     styleUrls: ['statistics.component.scss']
 })
 export class StatisticsComponent {
+    @Input() fake : Boolean;
     nbrTab:number;
     percentToPrint:string;
     colorPercentTab:string
@@ -24,18 +25,25 @@ export class StatisticsComponent {
             let mean = Number(this.cookieService.get('tabEmbeded-meanTab'));
             mean=mean*nTab+Number(this.cookieService.get('tabEmbeded-numberTabToday'));
             nTab+=1;
+            mean=mean/nTab
             this.cookieService.set('tabEmbeded-meanTab', ""+mean, 365)
             this.cookieService.set('tabEmbeded-nDayTab', ""+nTab, 365)
 
-
-            this.cookieService.set('tabEmbeded-numberTabToday', "1", 365)
+            if(!this.fake){
+              this.cookieService.set('tabEmbeded-numberTabToday', "1", 365)
+            }
             this.nbrTab=1
-            this.cookieService.set('tabEmbeded-currentDate', dateStrFormat, 365)
+            if(!this.fake){
+              this.cookieService.set('tabEmbeded-currentDate', dateStrFormat, 365)
+            }
 
         } else{
             this.nbrTab=Number(this.cookieService.get('tabEmbeded-numberTabToday'))
-            this.nbrTab+=1
-            this.cookieService.set('tabEmbeded-numberTabToday', ""+this.nbrTab, 365)
+            if(!this.fake){
+              this.nbrTab+=1
+              this.cookieService.set('tabEmbeded-numberTabToday', ""+this.nbrTab, 365)
+            }
+            
         }
 
         this.setPercent()

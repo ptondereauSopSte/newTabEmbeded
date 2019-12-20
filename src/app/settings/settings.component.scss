@@ -6,7 +6,6 @@
 
 .menuSettings{
     width:10vw;
-    height:20vh;
     position: relative;
     background-color:whitesmoke;
     border-radius: 3px;
@@ -49,7 +48,7 @@
 }
 
 .subMenuSettings{
-    width:12vw;
+    width:13vw;
     position: absolute;
     right: 10.3vw;
     top: 0vh;
@@ -119,4 +118,22 @@
 
 .middlePannel{
     border-bottom:3px solid #212322;
+}
+
+.reorganizeButton{
+    align-items: center;
+    background-color:lightskyblue;
+    border-radius:0.43em;
+    text-align: center;
+    padding:0vh 0.5vw;
+    margin:0.5vh 0px;
+    p{
+        margin:0px;
+    }
+
+    .logoReplace{
+        width:1vw;
+        height:1vw;
+        margin-left:0.5vw;
+    }
 }

@@ -21,6 +21,9 @@ export class AppComponent implements OnInit{
 
   searchTxt : string;
 
+  featuresDraggable : Boolean = false;
+  featuresDraggableSub : Subscription;
+
   constructor(private globalService : GlobalService, private sanitizer : DomSanitizer){}
 
   ngOnInit() {
@@ -47,11 +50,19 @@ export class AppComponent implements OnInit{
 
     //On récupère la map des features
     this.featureMapSub = this.globalService.featuresMapSubject.subscribe(
-      (featuresMap: string) => {
+      (featuresMap: any) => {
         this.featuresMap = featuresMap;
       }
     );
     this.globalService.emitFeaturesMapSubject();
+
+    //On prend le setting de draggabilité (très bizarre ce mot francisé)
+    this.featuresDraggableSub = this.globalService.featuresDraggableSubject.subscribe(
+      (featuresDraggable: Boolean) => {
+        this.featuresDraggable = featuresDraggable;
+      }
+    );
+    this.globalService.emitFeaturesDraggableSubject();
   }
 
   searchOnGoogle(){
@@ -65,6 +76,10 @@ export class AppComponent implements OnInit{
     } else{
       this.styleForBackground = this.sanitizer.bypassSecurityTrustStyle("background-color: "+this.backgroundColor+";");
     }
+  }
+
+  alert(){
+    alert("off")
   }
 
 }

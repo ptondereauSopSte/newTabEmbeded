@@ -8,7 +8,17 @@
     </div>
   </div>
 
-  <statistics *ngIf="featuresMap['statistics'].enabled"></statistics>
-  <time-remaining *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
-  <time *ngIf="featuresMap['time'].enabled"></time>
+  <div class="features" [ngClass]="{'hidden': featuresDraggable}">
+    <statistics [fake]="false" *ngIf="featuresMap['statistics'].enabled"></statistics>
+    <time-remaining *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
+    <time *ngIf="featuresMap['time'].enabled"></time>
+    <coffee-counter></coffee-counter>
+  </div>
+
+  <div class="features draggable" [ngClass]="{'hidden': !featuresDraggable}">
+    <statistics [fake]="true" *ngIf="featuresMap['statistics'].enabled" cdkDrag (mouseup)="alert()"></statistics>
+    <time-remaining *ngIf="featuresMap['timeCounter'].enabled" cdkDrag (mouseup)="alert()"></time-remaining>
+    <time *ngIf="featuresMap['time'].enabled" cdkDrag (mouseup)="alert()"></time>
+    <coffee-counter cdkDrag (mouseup)="alert()"></coffee-counter>
+  </div>
 </div>

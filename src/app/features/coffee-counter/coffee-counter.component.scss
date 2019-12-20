@@ -1,0 +1,37 @@
+.cardButton{
+    padding:0.5vw;
+    border-radius: 3px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    align-content: center;
+    img{
+        width:2vw;
+        height:2vw;
+        margin-right:1vw;
+        display: block;
+        filter:invert(1);
+    }
+    &:hover{
+        background-color: whitesmoke;
+        img{
+            filter:invert(0);
+        }
+        h1{
+            color:black;
+        }
+    }
+}
+
+h1{
+    font-family: 'Ubuntu', sans-serif;
+    color:whitesmoke;
+    margin:0px;
+}
+h1{
+    font-size: 3vh;
+    letter-spacing: 2px;
+    margin-right:0.5vw;
+}
+
+.tooMuch{
+    color:#ff4444;
+}

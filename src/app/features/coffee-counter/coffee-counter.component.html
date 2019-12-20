@@ -1,0 +1,9 @@
+<div class="flexRow button cardButton" (click)="addBreak()">
+    <img src="https://image.flaticon.com/icons/png/512/254/254516.png"/>
+    <h1>{{counterBreak}}</h1>
+</div>
+
+<div class="flexRow button cardButton" (click)="addCoffee()">
+    <img src="https://image.flaticon.com/icons/png/512/31/31080.png"/>
+    <h1 [ngClass]="{'tooMuch': counter>3}">{{counterCoffee}}</h1>
+</div>

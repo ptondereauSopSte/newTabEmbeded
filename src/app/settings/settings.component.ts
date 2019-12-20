@@ -85,7 +85,10 @@ export class SettingsComponent implements OnInit{
                 this.globalService.saveBackGround('image')
             }
         }
-        
+
+        if (key==='features'){
+            this.globalService.saveFeatures();
+        }
         
         this.isSettingsMenuOpened = false;
         this.isSubMenuOpened  = false;
@@ -94,5 +97,9 @@ export class SettingsComponent implements OnInit{
     editEnabledFeatures(event:any, keyFeature : string){
         this.featuresMap[keyFeature].enabled = event.checked
         this.globalService.setFeature(keyFeature, event.checked)
+    }
+
+    enableMove(){
+        this.globalService.enableOrDisableMove();
     }
 }

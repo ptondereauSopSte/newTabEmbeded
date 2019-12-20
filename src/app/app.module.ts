@@ -11,6 +11,7 @@ import { TimeComponent } from './features/time/time.component';
 import { StatisticsComponent } from './features/statistics/statistics.component';
 import { TimeRemainingComponent } from './features/time-remaining/time-remaining.component';
 import { TimeRemainingCardComponent } from './features/time-remaining/time-remaining-card/time-remaining-card.component';
+import { CoffeeCounterComponent } from './features/coffee-counter/coffee-counter.component'
 
 
 import { GlobalService } from './global.service';
@@ -18,7 +19,7 @@ import { MaterialModule } from './material.module';
 
 @NgModule({
   imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MaterialModule ],
-  declarations: [ AppComponent, SettingsComponent, TimeComponent, StatisticsComponent,TimeRemainingComponent, TimeRemainingCardComponent ],
+  declarations: [ AppComponent, SettingsComponent, TimeComponent, StatisticsComponent,TimeRemainingComponent, TimeRemainingCardComponent, CoffeeCounterComponent ],
   bootstrap:    [ AppComponent ],
   providers: [ GlobalService, CookieService ]
 })

@@ -60,9 +60,14 @@
                     <mat-slide-toggle [checked]="featuresMap[feature].enabled" [color]="'warn'" (change)="editEnabledFeatures($event, feature)"></mat-slide-toggle>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: row-reverse; width:95%">
+            <div style="display: flex; flex-direction: row-reverse; width:90%; justify-content: space-between; margin:auto;">
                 <div class="button buttonSave" (click)="save('features')">
                     <p>Save</p>
+                </div>
+
+                <div class="flexRow button reorganizeButton" (click)="enableMove()">
+                    <p>Reorganize</p>
+                    <img class="button logoReplace" src="https://image.flaticon.com/icons/png/512/15/15978.png">
                 </div>
             </div>
         </div>

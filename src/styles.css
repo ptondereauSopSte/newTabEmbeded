@@ -13,6 +13,18 @@ p, h1, h2, h3, h4, h5{
     cursor:pointer;
 }
 
+.draggable{
+    cursor:move !important;
+}
+
+.draggable :nth-child(n) :nth-child(n){
+    pointer-events: none;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
 .flexRow{
     display:flex;
     flex-direction: row;

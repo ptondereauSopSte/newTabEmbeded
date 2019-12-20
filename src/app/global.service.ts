@@ -11,6 +11,9 @@ export class GlobalService {
     featuresMap : any;
     featuresMapSubject = new Subject<any>();
 
+    featuresDraggable = false;
+    featuresDraggableSubject = new Subject<Boolean>();
+
     constructor(private cookieService : CookieService) { }
 
     init(){
@@ -60,6 +63,16 @@ export class GlobalService {
         }
     }
 
+    saveFeatures(){
+        this.featuresDraggable=false;
+        this.emitFeaturesDraggableSubject();
+    }
+
+    enableOrDisableMove(){
+        this.featuresDraggable=!this.featuresDraggable;
+        this.emitFeaturesDraggableSubject();
+    }
+
     emitBackgroundColorSubject(){
         this.backgroundColorSubject.next(this.backgroundColor.slice());
         
@@ -73,4 +86,7 @@ export class GlobalService {
         this.featuresMapSubject.next(this.featuresMap);
     }
 
+    emitFeaturesDraggableSubject(){
+        this.featuresDraggableSubject.next(this.featuresDraggable);
+    }
 }
