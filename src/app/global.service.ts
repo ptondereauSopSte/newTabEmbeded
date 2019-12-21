@@ -19,40 +19,43 @@ export class GlobalService {
     init(){
         this.backgroundColor = this.cookieService.get('tabEmbeded-backgroundColor') ? this.cookieService.get('tabEmbeded-backgroundColor') : "#131E29"
         this.backgroundImageUrl = this.cookieService.get('tabEmbeded-backgroundImageUrl');
-        this.featuresMap = JSON.parse(this.cookieService.get('tabEmbeded-featuresMap'));
-
-        /*this.featuresMap = {
-            "time":
-            {
-                "name":"Time",
-                "enabled":true,
-            },
-            "statistics":
-            {
-                "name":"Statistics",
-                "enabled":true,
-            },
-            "timeCounter":
-            {
-                "name":"Time counter",
-                "enabled":true
-            },
-            "counters":
-            {
-                "name":"Counters",
-                "enabled":true
-            },
-            "weather":
-            {
-                "name":"Weather",
-                "enabled":true
-            },
-            "panda":
-            {
-                "name":"Panda counter",
-                "enabled":true
+        if (this.cookieService.get('tabEmbeded-featuresMap')){
+            this.featuresMap = JSON.parse(this.cookieService.get('tabEmbeded-featuresMap'));
+        } else {
+            this.featuresMap = {
+                "time":
+                {
+                    "name":"Time",
+                    "enabled":true,
+                },
+                "statistics":
+                {
+                    "name":"Statistics",
+                    "enabled":true,
+                },
+                "timeCounter":
+                {
+                    "name":"Time counter",
+                    "enabled":true
+                },
+                "counters":
+                {
+                    "name":"Counters",
+                    "enabled":true
+                },
+                "weather":
+                {
+                    "name":"Weather",
+                    "enabled":true
+                },
+                "panda":
+                {
+                    "name":"Panda counter",
+                    "enabled":true
+                }
             }
-        }*/
+            this.saveFeatures(this.featuresMap)
+        }
     }
 
     setBackGround(keyAdd: string, arg : string){

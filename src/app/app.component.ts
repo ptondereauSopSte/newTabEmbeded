@@ -101,9 +101,11 @@ export class AppComponent implements OnInit{
   }
 
   safeMap(){
-    Object.keys(this.featuresMap).forEach((feature)=>{
-      this.mapPositionStyle[feature]=this.sanitizer.bypassSecurityTrustStyle(this.featuresMap[feature]['position'])
-    })
+    if(this.featuresMap){
+      Object.keys(this.featuresMap).forEach((feature)=>{
+        this.mapPositionStyle[feature]=this.sanitizer.bypassSecurityTrustStyle(this.featuresMap[feature]['position'])
+      })
+    }
   }
 
 }
