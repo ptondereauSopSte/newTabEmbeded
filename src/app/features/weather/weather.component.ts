@@ -6,21 +6,21 @@ import { HttpClient } from '@angular/common/http';
     templateUrl: 'weather.component.html',
     styleUrls: ['weather.component.scss']
 })
-export class WeatherComponent implements OnInit{
-    weatherForecast={
-        'today' : {},
-        'tomorrow' : {},
+export class WeatherComponent implements OnInit {
+    weatherForecast = {
+        'today': {},
+        'tomorrow': {},
         'tomorrowOfTomorrow': {}
     }
-    city : string;
-    constructor(private httpClient: HttpClient) {}
-    
-    ngOnInit(){
+    city: string;
+    constructor(private httpClient: HttpClient) { }
+
+    ngOnInit() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((pos)=>{
+            navigator.geolocation.getCurrentPosition((pos) => {
                 let lat = pos.coords.latitude;
                 let long = pos.coords.longitude;
-                this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+long+"&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
+                this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
                     (response) => {
                         this.city = response.city.name
                         //Températures
@@ -29,41 +29,41 @@ export class WeatherComponent implements OnInit{
                         this.weatherForecast['tomorrowOfTomorrow']["temperature"] = response.list[16].main.temp
 
                         //Méteo
-                        this.weatherForecast['today']["image"]="http://openweathermap.org/img/wn/"+response.list[0].weather[0].icon+"@2x.png";
-                        this.weatherForecast['tomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[8].weather[0].icon+"@2x.png";
-                        this.weatherForecast['tomorrowOfTomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[16].weather[0].icon+"@2x.png";
+                        this.weatherForecast['today']["image"] = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
+                        this.weatherForecast['tomorrow']["image"] = "http://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + "@2x.png";
+                        this.weatherForecast['tomorrowOfTomorrow']["image"] = "http://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + "@2x.png";
 
                     },
                     (error) => {
-                        console.log('Erreur ! : ' + error); 
+                        console.log('Erreur ! : ' + error);
                     }
                 );
 
-            }, 
-            (pos)=>{
-                let lat = 43.297;
-                let long = 5.3811;
-                this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+long+"&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
-                    (response) => {
-                        this.city = response.city.name
+            },
+                (pos) => {
+                    let lat = 43.297;
+                    let long = 5.3811;
+                    this.httpClient.get<any>("http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + long + "&units=metric&appid=c8c1f8336008e847de3b4833b0f26210").subscribe(
+                        (response) => {
+                            this.city = response.city.name
 
-                        //Températures
-                        this.weatherForecast['today']["temperature"] = response.list[0].main.temp
-                        this.weatherForecast['tomorrow']["temperature"] = response.list[8].main.temp
-                        this.weatherForecast['tomorrowOfTomorrow']["temperature"] = response.list[16].main.temp
+                            //Températures
+                            this.weatherForecast['today']["temperature"] = response.list[0].main.temp
+                            this.weatherForecast['tomorrow']["temperature"] = response.list[8].main.temp
+                            this.weatherForecast['tomorrowOfTomorrow']["temperature"] = response.list[16].main.temp
 
-                        //Méteo
-                        this.weatherForecast['today']["image"]="http://openweathermap.org/img/wn/"+response.list[0].weather[0].icon+"@2x.png";
-                        this.weatherForecast['tomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[8].weather[0].icon+"@2x.png";
-                        this.weatherForecast['tomorrowOfTomorrow']["image"]="http://openweathermap.org/img/wn/"+response.list[16].weather[0].icon+"@2x.png";
+                            //Méteo
+                            this.weatherForecast['today']["image"] = "http://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png";
+                            this.weatherForecast['tomorrow']["image"] = "http://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + "@2x.png";
+                            this.weatherForecast['tomorrowOfTomorrow']["image"] = "http://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + "@2x.png";
 
-                    },
-                    (error) => {
-                        console.log('Erreur ! : ' + error); 
-                    }
-                );
+                        },
+                        (error) => {
+                            console.log('Erreur ! : ' + error);
+                        }
+                    );
 
-            })
+                })
         }
     }
 }

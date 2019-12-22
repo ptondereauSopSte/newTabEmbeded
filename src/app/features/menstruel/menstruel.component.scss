@@ -52,3 +52,21 @@
     top: 1vh;
     right: 1vh;
 }
+
+.mediumInput {
+    width: 90%;
+    margin: auto;
+}
+
+.buttonSave {
+    background-color: #48D597;
+    margin: auto;
+    border-radius: 0.43em;
+    width: 30%;
+    text-align: center;
+    padding: 0.5vh 0.5vw;
+
+    p {
+        margin: 0px;
+    }
+}

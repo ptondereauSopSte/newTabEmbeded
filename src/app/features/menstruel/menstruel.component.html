@@ -1,13 +1,47 @@
 <div class="card">
-    <img class="button settingsIcon" src="https://image.flaticon.com/icons/png/512/17/17789.png">
-    <div class="diagram" style="transform:translateX(6.5vw) translateY(7.5vw)">
-        <div *ngFor="let day of circleDay; let k = index">
-            <div class="tileCircle" [style]="day['style']">
-                <p>{{day['day']}}</p>
-                <div class="borderCustom" [ngClass]="{'isPeriod': day['isPeriod'], 'isFertil': day['isFertil']}"></div>
-                <div *ngIf="currentDay===k+1" class="indicator"></div>
+    <img *ngIf="!settingsOpen" (click)="openOrCloseSettings()" class="button settingsIcon"
+        src="https://image.flaticon.com/icons/png/512/17/17789.png">
+    <img *ngIf="settingsOpen" (click)="openOrCloseSettings()" class="button settingsIcon"
+        src="https://image.flaticon.com/icons/png/512/151/151882.png">
+    <div *ngIf="!settingsOpen">
+        <div class="diagram" style="transform:translateX(6.5vw) translateY(7.5vw)">
+            <div *ngFor="let day of circleDay; let k = index">
+                <div class="tileCircle" [style]="day['style']">
+                    <p>{{day['day']}}</p>
+                    <div class="borderCustom" [ngClass]="{'isPeriod': day['isPeriod'], 'isFertil': day['isFertil']}">
+                    </div>
+                    <div *ngIf="currentDay===k+1" class="indicator"></div>
+                </div>
             </div>
         </div>
+        <h1 *ngIf="currentDay>durationPeriods" class="flexCol" style="height:100%; justify-content: center;">J -
+            {{29-currentDay}}</h1>
+        <h1 *ngIf="currentDay<=durationPeriods" class="flexCol" style="height:100%; justify-content: center;">--
+        </h1>
     </div>
-    <h1 class="flexCol" style="height:100%; justify-content: center;">J - {{30-currentDay}}</h1>
+    <div *ngIf="settingsOpen">
+        <form class="flexCol form" style="justify-content: center;padding-top: 5vh; margin-block-end: 0px;">
+            <mat-form-field class="mediumInput">
+                <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="Next periods"
+                    (dateInput)="changeDate($event)" (dateChange)="changeDate($event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="mediumInput">
+                <mat-label>Menses duration</mat-label>
+                <mat-select [(value)]="durationPeriods">
+                    <mat-option value="1">1 Day</mat-option>
+                    <mat-option value="2">2 Days</mat-option>
+                    <mat-option value="3">3 Days</mat-option>
+                    <mat-option value="4">4 Days</mat-option>
+                    <mat-option value="5">5 Days</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+
+        <div class="button buttonSave" (click)="save()">
+            <p>Save</p>
+        </div>
+    </div>
 </div>

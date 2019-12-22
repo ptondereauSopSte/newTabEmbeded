@@ -18,7 +18,7 @@
     <coffee-counter [style]="mapPositionStyle['counters']" *ngIf="featuresMap['counters'].enabled"></coffee-counter>
     <weather [style]="mapPositionStyle['weather']" *ngIf="featuresMap['weather'].enabled"></weather>
     <time-spending [style]="mapPositionStyle['panda']" *ngIf="featuresMap['panda'].enabled"></time-spending>
-    <menstruel></menstruel>
+    <menstruel [style]="mapPositionStyle['periods']" *ngIf="featuresMap['periods'].enabled"></menstruel>
   </div>
 
   <div class="features draggable" [ngClass]="{'hidden': !featuresDraggable}">
@@ -34,5 +34,7 @@
       (mouseup)="editPosition('weather')"></weather>
     <time-spending id="pandaBox" [style]="mapPositionStyle['panda']" *ngIf="featuresMap['panda'].enabled" cdkDrag
       (mouseup)="editPosition('panda')"></time-spending>
+    <menstruel id="periodsBox" [style]="mapPositionStyle['periods']" *ngIf="featuresMap['periods'].enabled" cdkDrag
+      (mouseup)="editPosition('periods')"></menstruel>
   </div>
 </div>
