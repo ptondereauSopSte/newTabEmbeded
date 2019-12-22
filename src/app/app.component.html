@@ -4,25 +4,35 @@
   <div class="googleSearchBar">
     <h1 class="title">Search on Google</h1>
     <div class="search__container">
-      <input class="search__input" type="text" placeholder="Rechercher..." [(ngModel)]="searchTxt" (keyup.enter)="searchOnGoogle()">
+      <input class="search__input" type="text" placeholder="Rechercher..." [(ngModel)]="searchTxt"
+        (keyup.enter)="searchOnGoogle()">
     </div>
   </div>
 
   <div class="features" [ngClass]="{'hidden': featuresDraggable}">
-    <statistics [style]="mapPositionStyle['statistics']" [fake]="false" *ngIf="featuresMap['statistics'].enabled"></statistics>
-    <time-remaining [style]="mapPositionStyle['timeCounter']" *ngIf="featuresMap['timeCounter'].enabled"></time-remaining>
+    <statistics [style]="mapPositionStyle['statistics']" [fake]="false" *ngIf="featuresMap['statistics'].enabled">
+    </statistics>
+    <time-remaining [style]="mapPositionStyle['timeCounter']" *ngIf="featuresMap['timeCounter'].enabled">
+    </time-remaining>
     <time [style]="mapPositionStyle['time']" *ngIf="featuresMap['time'].enabled"></time>
     <coffee-counter [style]="mapPositionStyle['counters']" *ngIf="featuresMap['counters'].enabled"></coffee-counter>
     <weather [style]="mapPositionStyle['weather']" *ngIf="featuresMap['weather'].enabled"></weather>
     <time-spending [style]="mapPositionStyle['panda']" *ngIf="featuresMap['panda'].enabled"></time-spending>
+    <menstruel></menstruel>
   </div>
 
   <div class="features draggable" [ngClass]="{'hidden': !featuresDraggable}">
-    <statistics id="statisticsBox" [style]="mapPositionStyle['statistics']" [fake]="true" *ngIf="featuresMap['statistics'].enabled" cdkDrag (mouseup)="editPosition('statistics')"></statistics>
-    <time-remaining id="timeCounterBox" [style]="mapPositionStyle['timeCounter']" *ngIf="featuresMap['timeCounter'].enabled" cdkDrag (mouseup)="editPosition('timeCounter')"></time-remaining>
-    <time id="timeBox" [style]="mapPositionStyle['time']" *ngIf="featuresMap['time'].enabled" cdkDrag (mouseup)="editPosition('time')"></time>
-    <coffee-counter id="countersBox" [style]="mapPositionStyle['counters']" *ngIf="featuresMap['counters'].enabled" cdkDrag (mouseup)="editPosition('counters')"></coffee-counter>
-    <weather id="weatherBox" [style]="mapPositionStyle['weather']" *ngIf="featuresMap['weather'].enabled" cdkDrag (mouseup)="editPosition('weather')"></weather>
-    <time-spending id="pandaBox" [style]="mapPositionStyle['panda']" *ngIf="featuresMap['panda'].enabled" cdkDrag (mouseup)="editPosition('panda')"></time-spending>
+    <statistics id="statisticsBox" [style]="mapPositionStyle['statistics']" [fake]="true"
+      *ngIf="featuresMap['statistics'].enabled" cdkDrag (mouseup)="editPosition('statistics')"></statistics>
+    <time-remaining id="timeCounterBox" [style]="mapPositionStyle['timeCounter']"
+      *ngIf="featuresMap['timeCounter'].enabled" cdkDrag (mouseup)="editPosition('timeCounter')"></time-remaining>
+    <time id="timeBox" [style]="mapPositionStyle['time']" *ngIf="featuresMap['time'].enabled" cdkDrag
+      (mouseup)="editPosition('time')"></time>
+    <coffee-counter id="countersBox" [style]="mapPositionStyle['counters']" *ngIf="featuresMap['counters'].enabled"
+      cdkDrag (mouseup)="editPosition('counters')"></coffee-counter>
+    <weather id="weatherBox" [style]="mapPositionStyle['weather']" *ngIf="featuresMap['weather'].enabled" cdkDrag
+      (mouseup)="editPosition('weather')"></weather>
+    <time-spending id="pandaBox" [style]="mapPositionStyle['panda']" *ngIf="featuresMap['panda'].enabled" cdkDrag
+      (mouseup)="editPosition('panda')"></time-spending>
   </div>
 </div>

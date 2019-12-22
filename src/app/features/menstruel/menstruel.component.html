@@ -1,0 +1,13 @@
+<div class="card">
+    <img class="button settingsIcon" src="https://image.flaticon.com/icons/png/512/17/17789.png">
+    <div class="diagram" style="transform:translateX(6.5vw) translateY(7.5vw)">
+        <div *ngFor="let day of circleDay; let k = index">
+            <div class="tileCircle" [style]="day['style']">
+                <p>{{day['day']}}</p>
+                <div class="borderCustom" [ngClass]="{'isPeriod': day['isPeriod'], 'isFertil': day['isFertil']}"></div>
+                <div *ngIf="currentDay===k+1" class="indicator"></div>
+            </div>
+        </div>
+    </div>
+    <h1 class="flexCol" style="height:100%; justify-content: center;">J - {{30-currentDay}}</h1>
+</div>

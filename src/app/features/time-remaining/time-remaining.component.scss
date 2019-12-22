@@ -1,58 +1,63 @@
-.addCardIcon, .saveIcon{
-    width:1.5vw;
-    height:1.5vw;
+.addCardIcon,
+.saveIcon {
+    width: 1.5vw;
+    height: 1.5vw;
 }
 
-.addCardIcon{
-    filter:invert(1);
+.addCardIcon {
+    filter: invert(1);
 }
 
-.closeCardIcon{
+.closeCardIcon {
     transform: rotate(45deg);
 }
-   
 
-.opened{
-    width:35vw;
+
+.opened {
+    width: 35vw;
     background-color: whitesmoke;
     border-radius: 3px;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
-    .addCardIcon{
-        filter:invert(0);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.37);
+
+    .addCardIcon {
+        filter: invert(0);
     }
 }
 
-.cardAdd{
-    height:5vh;
-    padding:1vh;
+.cardAdd {
+    height: 10vh;
+    padding: 0vh 1vh;
     position: relative;
     justify-content: space-between;
 
-    .form{
+    .form {
         width: 90%;
         justify-content: space-around;
+
         .mat-form-field {
             width: 40%;
         }
     }
 }
 
-.card{
+.card {
     position: relative;
-    width:13vw;
-    margin-top:1vh;
-    .deleteIcon{
+    width: 13vw;
+    margin-top: 1vh;
+
+    .deleteIcon {
         position: absolute;
-        display:none;
+        display: none;
         z-index: 2;
-        top:5px;
-        right:5px;
-        width:1vw;
-        height:1vw;
+        top: 5px;
+        right: 5px;
+        width: 1vw;
+        height: 1vw;
     }
-    &:hover{
-        .deleteIcon{
-            display:block;
+
+    &:hover {
+        .deleteIcon {
+            display: block;
         }
     }
 }

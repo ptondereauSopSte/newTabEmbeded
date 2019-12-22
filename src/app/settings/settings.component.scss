@@ -1,94 +1,106 @@
-.logoSettings{
-    width:2vw;
-    height:2vw;
-    filter:invert(1);
+.logoSettings {
+    width: 2vw;
+    height: 2vw;
+    filter: invert(1);
 }
 
-.menuSettings{
-    width:10vw;
+.menuSettings {
+    width: 14vw;
     position: relative;
-    background-color:whitesmoke;
+    background-color: whitesmoke;
     border-radius: 3px;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.37);
+    z-index: 2;
 
-    h1{
+    h1 {
         text-align: center;
-        margin:0px;
+        margin: 0px;
         text-decoration: underline #48D597;
     }
 
-    .closeButton{
-        width:0.7vw;
-        height:0.7vw;
+    .closeButton {
+        width: 0.7vw;
+        height: 0.7vw;
         position: absolute;
-        top:0.5vh;
-        right:0.5vw;
+        top: 0.5vh;
+        right: 0.5vw;
     }
 
-    .choiceSelect{
+    .choiceSelect {
         position: relative;
     }
 
-    .optionChoice{
+    .optionChoice {
         width: 100%;
         justify-content: space-around;
         align-items: center;
-        &:hover{
-            background-color:#48D597;
-        }
-        .divPreview,img{
-            width:1.5vw;
-            height:1.5vw;
+
+        &:hover {
+            background-color: #48D597;
         }
 
-        .divPreview{
+        .divPreview,
+        img {
+            width: 1.5vw;
+            height: 1.5vw;
+        }
+
+        .divPreview {
             background-color: #131E29;
         }
     }
 }
 
-.subMenuSettings{
-    width:13vw;
+.subMenuSettings {
+    width: 17vw;
     position: absolute;
-    right: 10.3vw;
+    right: 14.3vw;
     top: 0vh;
-    background-color:whitesmoke;
+    background-color: whitesmoke;
     border-radius: 3px;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.37);
 
-    .blockTitle{
-        border-bottom:3px solid #212322;
+    .blockTitle {
+        border-bottom: 3px solid #212322;
         justify-content: space-around;
         align-items: center;
-        p, img{
-            padding-bottom:5px;
+
+        p,
+        img {
+            padding-bottom: 5px;
             margin-bottom: 0.5vh;
-            margin-top:1vh;
+            margin-top: 1vh;
             border-bottom: 2px solid transparent;
         }
-        img{
+
+        img {
             width: 1vw;
             height: 1vw;
         }
-        .selected{
+
+        .selected {
             border-bottom: 2px solid #48D597 !important;
-            cursor:default !important;
+            cursor: default !important;
         }
-        .button:hover{
+
+        .button:hover {
             border-bottom: 2px solid black;
         }
     }
-    .gridChoice{
-        height:7vw;
+
+    .gridChoice {
+        height: 7vw;
         justify-content: space-around;
-        border-bottom:3px solid #212322;
-        .rowColors{
+        border-bottom: 3px solid #212322;
+
+        .rowColors {
             justify-content: space-around;
-            .choiceBackground{
-                width:1.5vw;
-                height:1.5vw;
-                border:1px solid black;
-                border-radius:0.43em;
+
+            .choiceBackground {
+                width: 1.5vw;
+                height: 1.5vw;
+                border: 1px solid black;
+                border-radius: 0.43em;
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -96,44 +108,46 @@
         }
     }
 
-    .buttonSave{
-        margin:0.5vh 0px;
-        background-color:#48D597;
-        border-radius:0.43em;
-        width:30%;
+    .buttonSave {
+        margin: 0.5vh 0px;
+        background-color: #48D597;
+        border-radius: 0.43em;
+        width: 30%;
         text-align: center;
-        padding:0.5vh 0.5vw;
-        p{
-            margin:0px;
+        padding: 0.5vh 0.5vw;
+
+        p {
+            margin: 0px;
         }
     }
 }
 
-.oneFeature{
+.oneFeature {
     justify-content: space-between;
-    width:70%;
-    margin:auto;
+    width: 70%;
+    margin: auto;
     align-items: center;
 }
 
-.middlePannel{
-    border-bottom:3px solid #212322;
+.middlePannel {
+    border-bottom: 3px solid #212322;
 }
 
-.reorganizeButton{
+.reorganizeButton {
     align-items: center;
-    background-color:lightskyblue;
-    border-radius:0.43em;
+    background-color: lightskyblue;
+    border-radius: 0.43em;
     text-align: center;
-    padding:0vh 0.5vw;
-    margin:0.5vh 0px;
-    p{
-        margin:0px;
+    padding: 0vh 0.5vw;
+    margin: 0.5vh 0px;
+
+    p {
+        margin: 0px;
     }
 
-    .logoReplace{
-        width:1vw;
-        height:1vw;
-        margin-left:0.5vw;
+    .logoReplace {
+        width: 1vw;
+        height: 1vw;
+        margin-left: 0.5vw;
     }
 }

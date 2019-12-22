@@ -1,6 +1,6 @@
 import { NgModule, ChangeDetectorRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service'
@@ -15,25 +15,26 @@ import { TimeRemainingCardComponent } from './features/time-remaining/time-remai
 import { CoffeeCounterComponent } from './features/coffee-counter/coffee-counter.component'
 import { WeatherComponent } from './features/weather/weather.component'
 import { TimeSpendingComponent } from './features/time-spending/time-spending.component';
-
+import { MenstruelComponent } from './features/menstruel/menstruel.component';
 
 import { GlobalService } from './global.service';
 import { MaterialModule } from './material.module';
 
 @NgModule({
-  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MaterialModule, HttpClientModule ],
-  declarations: [ 
-      AppComponent,
-      SettingsComponent,
-      TimeComponent,
-      StatisticsComponent,
-      TimeRemainingComponent,
-      TimeRemainingCardComponent,
-      CoffeeCounterComponent,
-      WeatherComponent,
-      TimeSpendingComponent
-    ],
-  bootstrap:    [ AppComponent ],
-  providers: [ GlobalService, CookieService ]
+  imports: [BrowserModule, BrowserAnimationsModule, FormsModule, MaterialModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    SettingsComponent,
+    TimeComponent,
+    StatisticsComponent,
+    TimeRemainingComponent,
+    TimeRemainingCardComponent,
+    CoffeeCounterComponent,
+    WeatherComponent,
+    TimeSpendingComponent,
+    MenstruelComponent
+  ],
+  bootstrap: [AppComponent],
+  providers: [GlobalService, CookieService]
 })
 export class AppModule { }

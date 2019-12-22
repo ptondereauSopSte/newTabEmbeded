@@ -1,0 +1,54 @@
+.card {
+    width: 15vw;
+    height: 15vw;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.37);
+    text-align: center;
+    position: relative;
+}
+
+.tileCircle {
+    width: 2vw;
+    height: 0.7vh;
+    position: absolute;
+    text-align: center;
+
+    p {
+        margin: 0px;
+        font-size: 80%;
+    }
+
+    .borderCustom {
+        width: 1vw;
+        height: 0.5vh;
+        margin: auto;
+        margin-top: 1vh;
+        margin-bottom: 1vh;
+        background-color: black;
+    }
+}
+
+.isPeriod {
+    background-color: lightcoral !important;
+}
+
+.isFertil {
+    background-color: lightskyblue !important;
+}
+
+.indicator {
+    width: 1vw;
+    height: 1vw;
+    margin: auto;
+    border-radius: 100%;
+    background-color: black;
+}
+
+.settingsIcon {
+    position: absolute;
+    width: 1vw;
+    height: 1vw;
+    top: 1vh;
+    right: 1vh;
+}

@@ -1,29 +1,35 @@
-.card{
-    width:6vw;
+.card {
+    width: 6vw;
     text-align: center;
     padding: 0.5vw 1vw;
     border-radius: 3px;
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.37);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.37);
     background-color: whitesmoke;
 }
 
-.oneWeather{
-    padding:1vh 0vw;
-    h1{
-        margin:10px;
+.oneWeather {
+    padding: 1vh 0vw;
+
+    h1 {
+        margin: 1vh 0px;
+        font-size: 4vh;
     }
-    .infoWeather{
+
+    .infoWeather {
         justify-content: space-between;
         width: 100%;
-        .boxImg{
-            border-radius:100%;
-            background-color:#d0daff;
+
+        .boxImg {
+            border-radius: 100%;
+            background-color: #d0daff;
         }
-        img{
-            width:3vw;
-            height:3vw;
+
+        img {
+            width: 3vw;
+            height: 3vw;
         }
-        p{
+
+        p {
             font-size: 2vh;
         }
     }
